@@ -4,15 +4,15 @@
 <div class="container">
     <h1>Create Customer</h1>
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
-    <form action="{{ route('customers.store') }}" method="POST">
+    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="name">Name</label>
@@ -50,18 +50,6 @@
         <div class="form-group">
             <label for="profile_picture">Profile Picture</label>
             <input type="file" class="form-control" id="profile_picture" name="profile_picture">
-        </div>
-        <div class="form-group">
-            <label for="software">Software</label>
-            <input type="text" class="form-control" id="software" name="software">
-        </div>
-        <div class="form-group">
-            <label for="website">Website</label>
-            <input type="url" class="form-control" id="website" name="website">
-        </div>
-        <div class="form-group">
-            <label for="tax_number">Tax Number</label>
-            <input type="text" class="form-control" id="tax_number" name="tax_number">
         </div>
         <div class="form-group" style="display: none;">
             <label for="status">Status</label>

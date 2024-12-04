@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('phone')->nullable();
+            $table->string('phone')->unique();
             $table->string('address')->nullable();
             $table->enum('gender', ['male', 'female', 'other'])->nullable();
             $table->date('date_of_birth')->nullable();
@@ -25,10 +25,47 @@ return new class extends Migration
             $table->string('software')->nullable();
             $table->string('website')->nullable();
             $table->string('tax_number')->nullable();
-            $table->enum('status', allowed: ['active', 'deleted'])->nullable();
+            $table->enum(column: 'status', allowed: ['active', 'deleted'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('customers')->insert([
+            [
+                'name' => 'John Doe',
+                'email' => 'john.doe@example.com',
+                'password' => bcrypt('password'),
+                'phone' => '1234567890',
+                'address' => '123 Main St',
+                'gender' => 'male',
+                'date_of_birth' => '1990-01-01',
+                'profile_picture' => 'john_doe.jpg',
+                'software' => 'Software A',
+                'website' => 'https://johndoe.com',
+                'tax_number' => '123456789',
+                'status' => 'active',
+                'email_verified_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Jane Smith',
+                'email' => 'jane.smith@example.com',
+                'password' => bcrypt('password'),
+                'phone' => '0987654321',
+                'address' => '456 Elm St',
+                'gender' => 'female',
+                'date_of_birth' => '1985-05-15',
+                'profile_picture' => 'jane_smith.jpg',
+                'software' => 'Software B',
+                'website' => 'https://janesmith.com',
+                'tax_number' => '987654321',
+                'status' => 'active',
+                'email_verified_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 
     /**

@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h1>Customers</h1>
+    <h1>Users</h1>
     <table class="table table-bordered">
         <div class="text-right mb-3">
-            <a href="{{ route('customers.create') }}" class="btn btn-success">Add Customer</a>
+            <a href="{{ route('users.create') }}" class="btn btn-success">Add User</a>
         </div>
         <thead>
             <tr>
@@ -16,15 +16,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($customers as $customer)
+            @foreach($users as $user)
             <tr>
-                <td>{{ $customer->id }}</td>
-                <td>{{ $customer->name }}</td>
-                <td>{{ $customer->email }}</td>
+                <td>{{ $user->id }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
                 <td>
-                    <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-info">View</a>
-                    <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-warning">Edit</a>
-                    <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" style="display:inline;">
+                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">View</a>
+                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

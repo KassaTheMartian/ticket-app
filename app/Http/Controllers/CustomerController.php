@@ -19,6 +19,11 @@ class CustomerController extends Controller
 
     public function store(Request $request) 
     {
+        $request->validate([
+            'email' => 'required|email|unique:customers,email|unique:users,email',
+            'phone' => 'required|digits_between:10,11|unique:customers,phone|unique:users,phone',
+        ]);
+
         Customer::create($request->all());
         return redirect()->route('customers.index')->with('success', 'Khách hàng đã được tạo.');
     }
@@ -36,6 +41,10 @@ class CustomerController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'phone' => 'required|digits_between:10,11',
+        ]);
         $customer = Customer::findOrFail($id);
         $customer->update($request->all());
         return redirect()->route('customers.index')->with('success', 'Khách hàng đã được cập nhật.');

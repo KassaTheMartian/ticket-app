@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('phone')->nullable();
+            $table->string('phone')->unique();
             $table->string('address')->nullable();
             $table->enum('gender', ['male', 'female', 'other'])->nullable();
             $table->date('date_of_birth')->nullable();
@@ -42,6 +42,35 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        DB::table('users')->insert([
+            [
+                'name' => 'John Doe',
+                'email' => 'john.doe@example.com',
+                'password' => bcrypt('password'),
+                'phone' => '1234567890',
+                'address' => '123 Main St',
+                'gender' => 'male',
+                'date_of_birth' => '1990-01-01',
+                'profile_picture' => 'john_doe.jpg',
+                'status' => 'active',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Jane Smith',
+                'email' => 'jane.smith@example.com',
+                'password' => bcrypt('password'),
+                'phone' => '0987654321',
+                'address' => '456 Elm St',
+                'gender' => 'female',
+                'date_of_birth' => '1992-02-02',
+                'profile_picture' => 'jane_smith.jpg',
+                'status' => 'active',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 
     /**
