@@ -26,11 +26,11 @@
             <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" required>
         </div>
         
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" class="form-control" id="password" name="password">
             <small class="form-text text-muted">Leave blank if you don't want to change the password.</small>
-        </div>
+        </div> --}}
 
         <div class="form-group">
             <label for="phone">Phone:</label>

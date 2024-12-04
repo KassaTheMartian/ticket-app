@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('software')->nullable();
             $table->string('website')->nullable();
             $table->string('tax_number')->nullable();
-            $table->enum(column: 'status', allowed: ['active', 'deleted'])->nullable();
+            $table->enum(column: 'status', allowed: ['active', 'deleted'])->default('active');
             $table->rememberToken();
             $table->timestamps();
         });

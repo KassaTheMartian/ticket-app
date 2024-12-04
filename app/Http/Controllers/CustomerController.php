@@ -42,8 +42,8 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'email' => 'required|email',
-            'phone' => 'required|digits_between:10,11',
+            'email' => 'required|email|unique:users,email|unique:customers,email,' . $id,
+            'phone' => 'required|digits_between:10,11|unique:users,phone|unique:customers,phone,' . $id,
         ]);
         $customer = Customer::findOrFail($id);
         $customer->update($request->all());

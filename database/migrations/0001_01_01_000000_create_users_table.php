@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female', 'other'])->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('profile_picture')->nullable();
-            $table->enum('status', ['active', 'deleted'])->nullable();
+            $table->enum(column: 'status', allowed: ['active', 'deleted'])->default('active');
             //$table->foreignId('role_id')->constrained(roles)->onDelete('set null');
             $table->rememberToken();
             $table->timestamps();

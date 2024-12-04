@@ -14,6 +14,8 @@ class Customer extends Authenticatable implements MustVerifyEmail
 
     use HasFactory, Notifiable;
 
+    protected $table = 'customers';
+
     protected $fillable = [
         'name',
         'email',

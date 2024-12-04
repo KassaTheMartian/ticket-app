@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->enum(column: 'status', allowed: ['active', 'deleted'])->nullable();
+            $table->enum(column: 'status', allowed: ['active', 'deleted'])->default('active');
             $table->timestamps();
         });
         DB::table('departments')->insert([

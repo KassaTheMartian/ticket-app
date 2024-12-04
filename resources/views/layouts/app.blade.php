@@ -11,7 +11,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand text-primary fw-bold d-flex align-items-center" href="{{ url('/') }}">
+                    <i class="bi bi-house-door me-2"></i> <!-- Biểu tượng Bootstrap Icons -->
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -33,10 +34,13 @@
                         <li class="nav-item"><a class="nav-link" href="#">Ticket</a>
                     </ul>
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="{{ route('ticket_types.index') }}">Ticket Type</a>
+                    </ul>
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item"><a class="nav-link" href="#">Role</a>
                     </ul>
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Article</a>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('articles.index') }}">Article</a>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

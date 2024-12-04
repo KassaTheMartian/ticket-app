@@ -20,6 +20,10 @@ class DepartmentController extends Controller
 
     public function store(Request $request) 
     {
+        $request->validate([
+            'name' => 'required|string|max:255|unique:departments,name',
+            'description' => 'nullable|string',
+        ]);
         Department::create($request->all());
         return redirect()->route('departments.index')->with('success', 'Phòng ban đã được tạo.');
     }
@@ -38,6 +42,10 @@ class DepartmentController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|string|max:255|unique:departments,name,' . $id,
+            'description' => 'nullable|string',
+        ]);
         $department = Department::findOrFail($id);
         $department->update($request->all());
         return redirect()->route('departments.index')->with('success', 'Phòng ban đã được cập nhật.');
